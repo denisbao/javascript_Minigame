@@ -10,6 +10,12 @@ let hasBonusLife = true
 
 adjustHealthBars(chosenMaxLife)
 
+function reset() {
+  currentMonsterHealth = chosenMaxLife
+  currentPlayerHealth = chosenMaxLife
+  resetGame(chosenMaxLife)
+}
+
 function endRound() {
   const initialPlayerHealt = currentPlayerHealth
 
@@ -31,6 +37,10 @@ function endRound() {
     alert('You are dead. Pathetic...')
   } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
     alert('The monster is dead... and you to! Your bravery will be remembered.')
+  }
+
+  if (currentMonsterHealth <= 0 || currentPlayerHealth <= 0) {
+    reset()
   }
 }
 
