@@ -137,15 +137,14 @@ function strongAttackHandler() {
 }
 
 function attackMonster(attackMode) {
-  let maxDamage
-  let logEventType
-  if (attackMode === MODE_ATTACK) {
-    maxDamage = ATTACK_VALUE
-    logEventType = LOG_EVENT_PLAYER_ATTACK
-  } else if (attackMode === MODE_STRONG_ATTACK) {
-    maxDamage = STRONG_ATTACK_VALUE
-    logEventType = LOG_EVENT_PLAYER_STRONG_ATTACK
-  }
+  const maxDamage =
+    attackMode === ATTACK_VALUE ? ATTACK_VALUE : STRONG_ATTACK_VALUE
+
+  let logEventType =
+    attackMode === ATTACK_VALUE
+      ? LOG_EVENT_PLAYER_ATTACK
+      : LOG_EVENT_PLAYER_STRONG_ATTACK
+
   //player attack
   const damage = dealMonsterDamage(maxDamage)
   currentMonsterHealth -= damage
